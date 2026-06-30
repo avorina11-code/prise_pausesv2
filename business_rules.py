@@ -55,8 +55,8 @@ def evaluate_pause_quota(matricule: str, type_pause: str) -> dict:
         # même au-delà des seuils. On se contente d'alerter visuellement.
         if occurrences >= max_occurrences or duree_cumulee >= max_duree:
             return _verdict(True, "danger", occurrences, max_occurrences, duree_cumulee, max_duree,
-                             "⚠️ Seuil dépassé (occurrences ou durée) — départ autorisé, "
-                             "alerte envoyée à la Vigie.")
+                             "⚠️ Seuil dépassé (occurrences ou durée) — départ non autorisé, "
+                             "alerte envoyée à la Vigie, veuillez avisez directement la Vigie.")
         if occurrences == max_occurrences - 1 or duree_cumulee >= max_duree * 0.7:
             return _verdict(True, "warning", occurrences, max_occurrences, duree_cumulee, max_duree,
                              "Vous approchez du quota de pause Besoin.")
